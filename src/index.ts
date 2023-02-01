@@ -2,10 +2,13 @@ import { faker } from "@faker-js/faker";
 import express from "express";
 import http from "http";
 import { Server, Socket } from "socket.io";
+import cors from "cors";
 
 const port = process.env.PORT || 3000;
 
 const app = express();
+app.use(cors());
+
 const httpServer = new http.Server(app);
 const io = new Server(httpServer);
 
