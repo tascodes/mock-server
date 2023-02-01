@@ -12,7 +12,7 @@ const app = (0, express_1.default)();
 const httpServer = new http_1.default.Server(app);
 const io = new socket_io_1.Server(httpServer);
 app.get("/", (req, res) => {
-    res.send("<div>Socket.IO server is running</div>");
+    res.sendFile(__dirname + "/public/index.html");
 });
 const setRandomInterval = (intervalFunction, minDelay, maxDelay) => {
     let timeout;
@@ -58,8 +58,11 @@ const getMessage = () => {
     return message;
 };
 io.on("connection", (socket) => {
+    console.log("New connection:", socket.id);
     setRandomInterval(() => {
-        io.emit("chat message", getMessage());
+        const message = getMessage();
+        io.emit("chat message", message);
+        console.log("Sent message:", message);
     }, 700, 2000);
 });
 httpServer.listen(port, () => {
