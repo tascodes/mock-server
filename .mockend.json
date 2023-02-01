@@ -1,3 +1,3 @@
 {
-  "User": { "title": { "string": {} } }
+  "User": { "title": { "string": {} }, "name": { "string": {} } }
 }
