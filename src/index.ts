@@ -10,7 +10,7 @@ const httpServer = new http.Server(app);
 const io = new Server(httpServer);
 
 app.get("/", (req, res) => {
-  res.send("<div>Socket.IO server is running</div>");
+  res.sendFile(__dirname + "/index.html");
 });
 
 const setRandomInterval = (
