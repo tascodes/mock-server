@@ -9,8 +9,17 @@ const port = process.env.PORT || 3000;
 const app = express();
 app.use(cors());
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
+  next();
+});
+
 const httpServer = new http.Server(app);
-const io = new Server(httpServer);
+
+const io = new Server(httpServer, {
+  cors: { origin: "*", methods: ["GET", "POST"] },
+});
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
