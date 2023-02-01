@@ -7,7 +7,6 @@ import cors from "cors";
 const port = process.env.PORT || 3000;
 
 const app = express();
-app.use(cors());
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -18,7 +17,7 @@ app.use((req, res, next) => {
 const httpServer = new http.Server(app);
 
 const io = new Server(httpServer, {
-  cors: { origin: "*", methods: ["GET", "POST"] },
+  cors: { origin: true },
 });
 
 app.get("/", (req, res) => {
