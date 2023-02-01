@@ -72,9 +72,12 @@ const getMessage = () => {
 };
 
 io.on("connection", (socket: Socket) => {
+  console.log("New connection:", socket.id);
   setRandomInterval(
     () => {
-      io.emit("chat message", getMessage());
+      const message = getMessage();
+      io.emit("chat message", message);
+      console.log("Sent message:", message);
     },
     700,
     2000
