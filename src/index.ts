@@ -9,6 +9,10 @@ const app = express();
 const httpServer = new http.Server(app);
 const io = new Server(httpServer);
 
+app.get("/", (req, res) => {
+  res.send("<div>Socket.IO server is running</div>");
+});
+
 const setRandomInterval = (
   intervalFunction: () => void,
   minDelay: number,
