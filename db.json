@@ -1,5 +1,5 @@
 {
-  "health": "ok",
+  "health": { "healthy": "ok" },
   "users": [
     {
       "id": 1,
